@@ -49,7 +49,8 @@ public:
 			// is defined HERE, because the base
 			// class contains a PURE function
 
-   void convert_it() {
+   void convert_it()
+       {
        converted_value = initial_value * 0.6;
        }
 
@@ -66,6 +67,11 @@ public:
 
 	// ADD CODE HERE FOR convert_it()
 	// DIVIDE INITIAL VALUE BY 0.6 TO GET KILOMETERS
+  void convert_it()
+     {
+      converted_value = initial_value/0.6;
+      }
+
 
 };  // end of class miles_kilos
 
@@ -77,7 +83,16 @@ public:
 ---------------------------------------------------------*/
 // ADD CODE HERE TO CREATE A CLASS FOR METERS TO YARDS
 // MULTIPLY INITIAL VALUE BY 39.0/36.0 TO GET YARDS.
+class meters_yards : public convert_base
+{
+public:
+  meters_yards(double passed_value) : convert_base(passed_value) { }
+  void convert_it()
+     {
+      converted_value = (initial_value*39)/36;
+      }
 
+};
 
 /*------------------------------------------------------
   Class Name:	yards_meters
@@ -85,6 +100,18 @@ public:
 ---------------------------------------------------------*/
 // ADD CODE HERE TO CREATE A CLASS FOR YARDS TO METERS
 // MULTIPLY INITIAL VALUE BY 36.0/39.0 TO GET METERS.
+
+class yards_meters : public convert_base
+{
+public:
+  yards_meters(double passed_value) : convert_base(passed_value) { }
+  void convert_it()
+     {
+      converted_value = (initial_value*36)/39;
+      }
+
+};
+
 
 
 /*****************  Main Function Starts Here ***********/
@@ -107,6 +134,13 @@ NOTE: Refer to the preceding code for kilos to miles for an example.  */
 
 /* Complete the coding for this step BEFORE YOU PROCEED FURTHER. */
 
+miles_kilos miles1(60.0);  // create a kilos_to_miles object
+miles1.convert_it(); // call the virtual function of that class
+
+cout << endl;
+cout << endl << "Distance in miles is: " << miles1.get_initial();
+cout << endl << "Distance in kilometers is: " << miles1.get_converted();
+cout << endl;
 
 
 
@@ -118,6 +152,13 @@ NOTE: Refer to the preceding code for kilos to miles for an example.  */
 	2. PRINT OUT THE INITIAL AND CONVERTED VALUES.           */
 
 /* Complete the coding for this step BEFORE YOU PROCEED FURTHER. */
+meters_yards meter1(60.0);  // create a kilos_to_miles object
+meter1.convert_it(); // call the virtual function of that class
+
+cout << endl;
+cout << endl << "Distance in meter is: " << meter1.get_initial();
+cout << endl << "Distance in yards is: " << meter1.get_converted();
+cout << endl;
 
 
 
@@ -127,6 +168,13 @@ NOTE: Refer to the preceding code for kilos to miles for an example.  */
 	4. PRINT OUT THE INITIAL AND CONVERTED VALUES.
    See previous code for examples.
 */
+yards_meters yards1(65.0);  // create a kilos_to_miles object
+yards1.convert_it(); // call the virtual function of that class
+
+cout << endl;
+cout << endl << "Distance in yards is: " << yards1.get_initial();
+cout << endl << "Distance in meter is: " << yards1.get_converted();
+cout << endl;
 
 return(0);
 } // end main
